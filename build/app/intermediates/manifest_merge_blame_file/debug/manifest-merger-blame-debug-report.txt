@@ -34,7 +34,7 @@
 23-->[androidx.core:core:1.6.0] /Users/mr.shaikh/.gradle/caches/transforms-3/ae42e6c01585f28a5adeac7499fca147/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 24        android:debuggable="true"
 25        android:icon="@mipmap/ic_launcher"
-26        android:label="mynotes" >
+26        android:label="Calorie Counter" >
 27        <activity
 28            android:name="com.xyz.mynotes.MainActivity"
 29            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
