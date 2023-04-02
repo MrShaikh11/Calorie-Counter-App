@@ -78,6 +78,11 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               TextButton(
                   onPressed: () async {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(child: CircularProgressIndicator());
+                        });
                     await Firebase.initializeApp(
                       options: DefaultFirebaseOptions.currentPlatform,
                     );
@@ -89,26 +94,38 @@ class _RegisterViewState extends State<RegisterView> {
                               email: email, password: password);
                       // print(userCredentials);
                       devtools.log(userCredentials.toString());
+                      Navigator.of(context).pop();
+
                       await successDialog(context, 'Registration Successfull');
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
+                        Navigator.of(context).pop();
+
                         // print("Weak Password");
                         // devtools.log('Weak Password');
                         await showErrorDialog(context, 'Weak Password');
                       } else if (e.code == 'email-already-in-use') {
+                        Navigator.of(context).pop();
+
                         // print("Email is already in Use");
                         // devtools.log('Email is already in Use');
                         await showErrorDialog(context, 'Email already in use');
                       } else if (e.code == 'invalid-email') {
+                        Navigator.of(context).pop();
+
                         // print('Invalid Email Entered');
                         // devtools.log('Invalid Email Entered');
                         await showErrorDialog(context, 'Invalid Email');
                       } else {
+                        Navigator.of(context).pop();
+
                         // print(e);
                         // devtools.log(e.toString());
                         await showErrorDialog(context, 'Error: ${e.code}');
                       }
                     } catch (e) {
+                      Navigator.of(context).pop();
+
                       await showErrorDialog(
                         context,
                         e.toString(),

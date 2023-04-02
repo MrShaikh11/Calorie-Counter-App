@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/main.dart';
 import 'package:mynotes/views/utilities/showErrorDialog.dart';
+import '../services/api_service.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,20 +15,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List list = [
-    'item',
-    'item',
-    'item',
-    'item',
-    'item',
-  ];
-  List dropDownListData = [
-    {"title": "100gm", "value": "1"},
-    {"title": "200gm", "value": "2"},
-    {"title": "300gm", "value": "3"},
-    {"title": "400gm", "value": "4"},
-  ];
   String defaultValue = "";
+  FetchCal obj = new FetchCal();
 
   @override
   Widget build(BuildContext context) {
@@ -123,26 +112,6 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
 
-                  Container(
-                    margin: EdgeInsets.only(top: 5, bottom: 20),
-                    // width: MediaQuery.of(context).size.width,
-                    // width: 200,
-                    height: 40,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Add Food",
-                          hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(0.5)),
-                          prefixIcon: Icon(Icons.add, size: 25)),
-                    ),
-                  ),
-
                   // Container(
                   //   margin: EdgeInsets.only(top: 5, bottom: 20),
                   //   // width: MediaQuery.of(context).size.width,
@@ -153,31 +122,13 @@ class _HomeViewState extends State<HomeView> {
                   //     color: Colors.white,
                   //     borderRadius: BorderRadius.circular(10),
                   //   ),
-                  //   child: DropdownButtonHideUnderline(
-                  //     child: DropdownButton<String>(
-                  //         isDense: true,
-                  //         value: defaultValue,
-                  //         isExpanded: true,
-                  //         menuMaxHeight: 350,
-                  //         items: [
-                  //           const DropdownMenuItem(
-                  //               child: Text(
-                  //                 "Select Quantity",
-                  //               ),
-                  //               value: ""),
-                  //           ...dropDownListData
-                  //               .map<DropdownMenuItem<String>>((data) {
-                  //             return DropdownMenuItem(
-                  //                 child: Text(data['title']),
-                  //                 value: data['value']);
-                  //           }).toList(),
-                  //         ],
-                  //         onChanged: (value) {
-                  //           print("selected Value $value");
-                  //           setState(() {
-                  //             defaultValue = value!;
-                  //           });
-                  //         }),
+                  //   child: TextFormField(
+                  //     decoration: InputDecoration(
+                  //         border: InputBorder.none,
+                  //         hintText: "Add Food",
+                  //         hintStyle:
+                  //             TextStyle(color: Colors.black.withOpacity(0.5)),
+                  //         prefixIcon: Icon(Icons.add, size: 25)),
                   //   ),
                   // ),
 
@@ -188,20 +139,20 @@ class _HomeViewState extends State<HomeView> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.numbers),
-                      ),
-                      hint: Text('Quantity'),
-                      items: <String>['100gm', '200gm', '300gm', '400gm']
-                          .map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: new Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (_) {},
-                    ),
+                    // child: DropdownButtonFormField<String>(
+                    //   decoration: InputDecoration(
+                    //     prefixIcon: Icon(Icons.numbers),
+                    //   ),
+                    //   hint: Text('Quantity'),
+                    //   items: <String>['100gm', '200gm', '300gm', '400gm']
+                    //       .map((String value) {
+                    //     return DropdownMenuItem<String>(
+                    //       value: value,
+                    //       child: new Text(value),
+                    //     );
+                    //   }).toList(),
+                    //   onChanged: (_) {},
+                    // ),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -212,7 +163,46 @@ class _HomeViewState extends State<HomeView> {
                     child: Text("Add Food"),
                   ),
                 ]),
-          )
+          ),
+          FutureBuilder(
+              future: obj.getData(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data?.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        // height: 120,
+                        color: Colors.greenAccent,
+
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        margin: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Name: ${snapshot.data?[index].name}",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              "Calories: ${snapshot.data?[index].cal} calories",
+                              maxLines: 1,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              })
         ],
       ),
     );

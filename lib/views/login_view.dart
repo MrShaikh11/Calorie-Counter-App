@@ -87,29 +87,44 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 TextButton(
                   onPressed: () async {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(child: CircularProgressIndicator());
+                        });
+
                     await Firebase.initializeApp(
                       options: DefaultFirebaseOptions.currentPlatform,
                     );
                     final email = _email.text;
                     final password = _password.text;
+
                     try {
                       final userCredentials = await FirebaseAuth.instance
                           .signInWithEmailAndPassword(
                               email: email, password: password);
                       devtools.log(userCredentials.toString());
+                        Navigator.of(context).pop();
+
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         notesRoute,
                         (route) => false,
                       );
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
+                        Navigator.of(context).pop();
+
                         await showErrorDialog(context, 'User Not Found');
                         devtools.log('User not found');
                       } else if (e.code == 'wrong-password') {
+                        Navigator.of(context).pop();
+
                         await showErrorDialog(context, 'Wrong Credentials');
                         // devtools.log('Wrong Password    ');
                         // print(e.code);
                       } else {
+                        Navigator.of(context).pop();
+
                         await showErrorDialog(
                           context,
                           'Error: ${e.code}',
