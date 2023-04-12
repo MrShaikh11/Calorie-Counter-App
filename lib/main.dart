@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/firebase_options.dart';
+import 'package:mynotes/views/add_new.dart';
 import 'package:mynotes/views/home_page.dart';
 import 'package:mynotes/views/login_view.dart';
-import 'package:mynotes/views/verify_email_view.dart';
 import 'views/register_view.dart';
 // import 'dart:developer' as devtools show log;
 
@@ -24,6 +24,8 @@ void main() {
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const HomePage(),
+        addRoute: (context) => const AddNew(),
+        // searchRoute: (context) =>  SearchView(),
       },
     ),
   );

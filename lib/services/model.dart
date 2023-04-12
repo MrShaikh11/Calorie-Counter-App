@@ -1,7 +1,7 @@
 class CalorieCounter {
   int? id;
   String? name;
-  String? cal;
+  int? cal;
 
   CalorieCounter({this.id, this.name, this.cal});
 
@@ -12,7 +12,7 @@ class CalorieCounter {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
     data['cal'] = this.cal;

@@ -1,10 +1,12 @@
+import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/main.dart';
-import 'package:mynotes/views/utilities/showErrorDialog.dart';
+import 'package:mynotes/services/model.dart';
+import 'package:mynotes/views/added_view.dart';
+import 'package:mynotes/views/search_view.dart';
 import '../services/api_service.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,194 +17,97 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  String defaultValue = "";
-  FetchCal obj = new FetchCal();
+  late final TextEditingController _name;
+  late final TextEditingController _cal;
+  Future<CalorieCounter>? _futureFood;
+  @override
+  void initState() {
+    _name = TextEditingController();
+    _cal = TextEditingController();
+  }
+
+  FetchCal obj = FetchCal();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Main UI"),
-      //   actions: [
-      //     PopupMenuButton<MenuAction>(onSelected: (value) async {
-      //       // print(value);
-      //       switch (value) {
-      //         case MenuAction.logout:
-      //           final shouldLogOut = await showLogOutDialog(context);
-      //           // devtools.log(shouldLogOut.toString());
-      //           if (shouldLogOut) {
-      //             await FirebaseAuth.instance.signOut();
-      //             Navigator.of(context).pushNamedAndRemoveUntil(
-      //               loginRoute,
-      //               (_) => false,
-      //             );
-      //           }
-      //       }
-      //     }, itemBuilder: (context) {
-      //       return const [
-      //         PopupMenuItem<MenuAction>(
-      //           value: MenuAction.logout,
-      //           child: Text("Logout"),
-      //         )
-      //       ];
-      //     })
-      //   ],
-      // ),
-      body: ListView(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Calorie Counter'),
+        // flexibleSpace: Container(
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.only(
+        //       bottomLeft: Radius.circular(20),
+        //       bottomRight: Radius.circular(20),
+        //     ),
+        //     color: Color(0xFF674AEF),
+        //   ),
+        // ),
+        backgroundColor: const Color(0xFF674AEF),
+
+        actions: [
+          PopupMenuButton<MenuAction>(
+              icon: const Icon(Icons.account_circle, size: 25),
+              onSelected: (value) async {
+                // print(value);
+                switch (value) {
+                  case MenuAction.logout:
+                    final shouldLogOut = await showLogOutDialog(context);
+                    // devtools.log(shouldLogOut.toString());
+                    if (shouldLogOut) {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        loginRoute,
+                        (_) => false,
+                      );
+                    }
+                }
+              },
+              itemBuilder: (context) {
+                return const [
+                  PopupMenuItem<MenuAction>(
+                    value: MenuAction.logout,
+                    child: Text("Logout"),
+                  )
+                ];
+              })
+        ],
+      ),
+      body: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 10),
-            decoration: BoxDecoration(
-                color: Color(0xFF674AEF),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                )),
-            child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      PopupMenuButton<MenuAction>(
-                          color: Colors.white,
-                          icon: Icon(Icons.account_circle, size: 25),
-                          onSelected: (value) async {
-                            // print(value);
-                            switch (value) {
-                              case MenuAction.logout:
-                                final shouldLogOut =
-                                    await showLogOutDialog(context);
-                                // devtools.log(shouldLogOut.toString());
-                                if (shouldLogOut) {
-                                  await FirebaseAuth.instance.signOut();
-                                  Navigator.of(context).pushNamedAndRemoveUntil(
-                                    loginRoute,
-                                    (_) => false,
-                                  );
-                                }
-                            }
-                          },
-                          itemBuilder: (context) {
-                            return const [
-                              PopupMenuItem<MenuAction>(
-                                value: MenuAction.logout,
-                                child: Text(
-                                  "Logout",
-                                ),
-                              )
-                            ];
-                          })
-                    ],
-                  ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 3, bottom: 15),
-                    child: Text(
-                      "TRACK YOUR CALORIES!!!",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                        wordSpacing: 2,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-
-                  // Container(
-                  //   margin: EdgeInsets.only(top: 5, bottom: 20),
-                  //   // width: MediaQuery.of(context).size.width,
-                  //   // width: 200,
-                  //   height: 40,
-                  //   alignment: Alignment.center,
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.circular(10),
-                  //   ),
-                  //   child: TextFormField(
-                  //     decoration: InputDecoration(
-                  //         border: InputBorder.none,
-                  //         hintText: "Add Food",
-                  //         hintStyle:
-                  //             TextStyle(color: Colors.black.withOpacity(0.5)),
-                  //         prefixIcon: Icon(Icons.add, size: 25)),
-                  //   ),
-                  // ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 5, bottom: 20),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    // child: DropdownButtonFormField<String>(
-                    //   decoration: InputDecoration(
-                    //     prefixIcon: Icon(Icons.numbers),
-                    //   ),
-                    //   hint: Text('Quantity'),
-                    //   items: <String>['100gm', '200gm', '300gm', '400gm']
-                    //       .map((String value) {
-                    //     return DropdownMenuItem<String>(
-                    //       value: value,
-                    //       child: new Text(value),
-                    //     );
-                    //   }).toList(),
-                    //   onChanged: (_) {},
-                    // ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                      minimumSize: const Size.fromHeight(40), // NEW
-                    ),
-                    onPressed: () {},
-                    child: Text("Add Food"),
-                  ),
-                ]),
+            color: const Color(0xFF674AEF),
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.all(10),
+            child: Center(child: Text("hello")),
           ),
-          FutureBuilder(
-              future: obj.getData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: snapshot.data?.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        // height: 120,
-                        color: Colors.greenAccent,
-
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                        margin: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Name: ${snapshot.data?[index].name}",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            Text(
-                              "Calories: ${snapshot.data?[index].cal} calories",
-                              maxLines: 1,
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              })
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+            child: ElevatedButton(
+              onPressed: () async {
+                showSearch(context: context, delegate: SearchView());
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                minimumSize: const Size.fromHeight(30), // NEW
+              ),
+              child: const Text('ADD FOOD!'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+            child: ElevatedButton(
+              onPressed: () async {
+                showSearch(context: context, delegate: AddedView());
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                minimumSize: const Size.fromHeight(30), // NEW
+              ),
+              child: const Text('Added Food!'),
+            ),
+          )
         ],
       ),
     );

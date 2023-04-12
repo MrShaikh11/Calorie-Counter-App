@@ -47,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
             centerTitle: true,
             title: const Text('LOGIN'),
             flexibleSpace: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
@@ -90,7 +90,9 @@ class _LoginViewState extends State<LoginView> {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         });
 
                     await Firebase.initializeApp(
@@ -104,7 +106,7 @@ class _LoginViewState extends State<LoginView> {
                           .signInWithEmailAndPassword(
                               email: email, password: password);
                       devtools.log(userCredentials.toString());
-                        Navigator.of(context).pop();
+                      Navigator.of(context).pop();
 
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         notesRoute,

@@ -41,7 +41,7 @@ class _RegisterViewState extends State<RegisterView> {
           centerTitle: true,
           title: const Text('REGISTER'),
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -81,7 +81,9 @@ class _RegisterViewState extends State<RegisterView> {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         });
                     await Firebase.initializeApp(
                       options: DefaultFirebaseOptions.currentPlatform,
