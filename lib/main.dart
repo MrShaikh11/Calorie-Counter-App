@@ -7,17 +7,39 @@ import 'package:mynotes/firebase_options.dart';
 import 'package:mynotes/views/add_new.dart';
 import 'package:mynotes/views/home_page.dart';
 import 'package:mynotes/views/login_view.dart';
+import 'views/addToList.dart';
+import 'views/added_view.dart';
 import 'views/register_view.dart';
 // import 'dart:developer' as devtools show log;
 
 void main() {
+  final Color myColor = Color(0xFF674AEF);
+
+  MaterialColor createMaterialColor(Color color) {
+    List strengths = <double>[.05];
+    Map<int, Color> swatch = {
+      50: color.withOpacity(strengths[0]),
+      100: color.withOpacity(strengths[0] * 2),
+      200: color.withOpacity(strengths[0] * 3),
+      300: color.withOpacity(strengths[0] * 4),
+      400: color.withOpacity(strengths[0] * 5),
+      500: color.withOpacity(strengths[0] * 6),
+      600: color.withOpacity(strengths[0] * 7),
+      700: color.withOpacity(strengths[0] * 8),
+      800: color.withOpacity(strengths[0] * 9),
+      900: color.withOpacity(strengths[0] * 10),
+    };
+    return MaterialColor(color.value, swatch);
+  }
+
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: "Secular One",
+        primarySwatch: createMaterialColor(myColor),
       ),
       home: const HomePage(),
       routes: {
@@ -25,6 +47,8 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const HomePage(),
         addRoute: (context) => const AddNew(),
+        homePage: (context) => const HomeView(),
+        addToListPage: (context) => AddToList(),
         // searchRoute: (context) =>  SearchView(),
       },
     ),

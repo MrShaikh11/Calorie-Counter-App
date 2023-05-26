@@ -1,0 +1,42 @@
+dependencies: \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/AuthProvider/OAuth/FIROAuthProvider.m \
+  /Users/mr.shaikh/mynotes/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseAuth.build/module.modulemap \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthProvider.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFederatedAuthProvider.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthUIDelegate.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFacebookAuthProvider.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthCredential.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthCredential.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/mr.shaikh/mynotes/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseCore.build/module.modulemap \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponent.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRDependency.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIRLogger.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Auth/FIRAuth_Internal.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Interop/FIRAuthInterop.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthAPNSTokenType.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/AuthProvider/OAuth/FIROAuthCredential_Internal.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCRequest.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCResponse.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRequestConfiguration.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthErrorUtils.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthInternalErrors.h \
+  /Users/mr.shaikh/mynotes/macos/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthWebUtils.h

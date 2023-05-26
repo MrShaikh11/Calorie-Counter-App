@@ -76,6 +76,9 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 controller: _password,
               ),
+              SizedBox(
+                height: 10,
+              ),
               TextButton(
                   onPressed: () async {
                     showDialog(

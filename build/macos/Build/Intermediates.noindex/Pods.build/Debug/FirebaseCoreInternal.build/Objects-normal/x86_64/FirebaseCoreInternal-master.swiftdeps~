@@ -1,0 +1,19 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "4a8dfdcf4aabee858381587b31d4953548fb70162f767d1be2f346fbb995ea1a"
+build_start_time: [1684747443, 467493057]
+build_end_time: [1684747443, 541607856]
+inputs:
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift": !private [1684747334, 671378612]
+  ? "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift"
+  : !private [1684747334, 672522544]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift": !private [1684747334, 673152685]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift": !private [1684747334, 673491001]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift": !private [1684747334, 674263000]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift": !private [1684747334, 671798229]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift": !private [1684747334, 670997858]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift": !private [1684747334, 674530506]
+  "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift": !private [1684747334, 673931598]
+  ? "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift"
+  : !private [1684747334, 672113180]
+  ? "/Users/mr.shaikh/mynotes/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift"
+  : !private [1684747334, 672843694]

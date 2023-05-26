@@ -85,6 +85,9 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   controller: _password,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   onPressed: () async {
                     showDialog(
