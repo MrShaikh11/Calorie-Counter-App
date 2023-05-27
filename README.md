@@ -1,4 +1,4 @@
-# mynotes
+# Calorita
 
 A new Flutter project.
 
